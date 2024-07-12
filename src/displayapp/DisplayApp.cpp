@@ -238,10 +238,7 @@ void DisplayApp::Refresh() {
         RestoreBrightness();
         break;
       case Messages::GoToSleep:
-        while (brightnessController.Level() != Controllers::BrightnessController::Levels::Off) {
-          brightnessController.Lower();
-          vTaskDelay(100);
-        }
+        brightnessController.Set(Controllers::BrightnessController::Levels::Off);
         lcd.Sleep();
         PushMessageToSystemTask(Pinetime::System::Messages::OnDisplayTaskSleeping);
         state = States::Idle;
@@ -379,7 +376,13 @@ void DisplayApp::Refresh() {
         break;
       case Messages::OnChargingEvent:
         RestoreBrightness();
-        motorController.RunForDuration(15);
+        if (batteryController.IsCharging() && currentApp == Apps::Clock) {
+          LoadNewScreen(Apps::BatteryInfo, DisplayApp::FullRefreshDirections::None);
+        } else if (!batteryController.IsCharging() && currentApp == Apps::BatteryInfo) {
+          LoadNewScreen(Apps::Clock, DisplayApp::FullRefreshDirections::None);
+        } else {
+          motorController.RunForDuration(15);
+        }
         break;
     }
   }

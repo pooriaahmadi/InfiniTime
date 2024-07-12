@@ -50,3 +50,21 @@ src/arm-none-eabi
 
 # clangd
 .cache/
+compile_commands.json
+post_build.sh
+.gitignore
+src/pinetime-mcuboot-app-dfu-1.14.0.zip
+src/pinetime-mcuboot-recovery-dfu-1.14.0.zip
+src/pinetime-mcuboot-recovery-loader-dfu-1.14.0.zip
+src/recoveryImage.h
+src/recoveryLoaderImage.h
+src/displayapp/apps/Apps.h
+src/displayapp/fonts/fontawesome_weathericons.c
+src/displayapp/fonts/jetbrains_mono_42.c
+src/displayapp/fonts/jetbrains_mono_76.c
+src/displayapp/fonts/jetbrains_mono_bold_20.c
+src/displayapp/fonts/jetbrains_mono_extrabold_compressed.c
+src/displayapp/fonts/lv_font_sys_48.c
+src/displayapp/fonts/open_sans_light.c
+src/resources/infinitime-resources-1.14.0.zip
+src/resources/resources.json
